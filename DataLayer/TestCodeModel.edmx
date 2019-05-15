@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeLastName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="EmployeeFirstName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="EmployeePhone" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="EmployeeZip" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="HireDate" Type="date" Nullable="false" />
+        </EntityType>
+        <Function Name="SP_Employee_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EmployeeID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Sp_Employee_GetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Sp_Employee_GetByLastName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EmployeeLastName" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Sp_Employee_GetByPhone" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EmployeePhone" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SP_Employee_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EmployeeLastName" Type="varchar" Mode="In" />
+          <Parameter Name="EmployeeFirstName" Type="varchar" Mode="In" />
+          <Parameter Name="EmployeePhone" Type="varchar" Mode="In" />
+          <Parameter Name="EmployeeZip" Type="varchar" Mode="In" />
+          <Parameter Name="HireDate" Type="date" Mode="In" />
+        </Function>
+        <Function Name="SP_Employee_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EmployeeID" Type="int" Mode="In" />
+          <Parameter Name="EmployeeLastName" Type="varchar" Mode="In" />
+          <Parameter Name="EmployeeFirstName" Type="varchar" Mode="In" />
+          <Parameter Name="EmployeePhone" Type="varchar" Mode="In" />
+          <Parameter Name="EmployeeZip" Type="varchar" Mode="In" />
+          <Parameter Name="HireDate" Type="date" Mode="In" />
+        </Function>
+        <EntityContainer Name="DatabaseModelStoreContainer">
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeLastName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EmployeeFirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EmployeePhone" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EmployeeZip" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="HireDate" Type="DateTime" Nullable="false" Precision="0" />
+        </EntityType>
+        <EntityContainer Name="DatabaseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Employee" EntityType="Self.Employee" />
+          <FunctionImport Name="SP_Employee_Delete">
+            <Parameter Name="EmployeeID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_Employee_GetAll" EntitySet="Employee" ReturnType="Collection(DatabaseModel.Employee)" />
+          <FunctionImport Name="Sp_Employee_GetByLastName" EntitySet="Employee" ReturnType="Collection(DatabaseModel.Employee)">
+            <Parameter Name="EmployeeLastName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_Employee_GetByPhone" EntitySet="Employee" ReturnType="Collection(DatabaseModel.Employee)">
+            <Parameter Name="EmployeePhone" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_Employee_Insert">
+            <Parameter Name="EmployeeLastName" Mode="In" Type="String" />
+            <Parameter Name="EmployeeFirstName" Mode="In" Type="String" />
+            <Parameter Name="EmployeePhone" Mode="In" Type="String" />
+            <Parameter Name="EmployeeZip" Mode="In" Type="String" />
+            <Parameter Name="HireDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="SP_Employee_Update">
+            <Parameter Name="EmployeeID" Mode="In" Type="Int32" />
+            <Parameter Name="EmployeeLastName" Mode="In" Type="String" />
+            <Parameter Name="EmployeeFirstName" Mode="In" Type="String" />
+            <Parameter Name="EmployeePhone" Mode="In" Type="String" />
+            <Parameter Name="EmployeeZip" Mode="In" Type="String" />
+            <Parameter Name="HireDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DatabaseModelStoreContainer" CdmEntityContainer="DatabaseEntities">
+          <EntitySetMapping Name="Employee">
+            <EntityTypeMapping TypeName="DatabaseModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="EmployeeLastName" ColumnName="EmployeeLastName" />
+                <ScalarProperty Name="EmployeeFirstName" ColumnName="EmployeeFirstName" />
+                <ScalarProperty Name="EmployeePhone" ColumnName="EmployeePhone" />
+                <ScalarProperty Name="EmployeeZip" ColumnName="EmployeeZip" />
+                <ScalarProperty Name="HireDate" ColumnName="HireDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_Employee_Delete" FunctionName="DatabaseModel.Store.SP_Employee_Delete" />
+          <FunctionImportMapping FunctionImportName="Sp_Employee_GetAll" FunctionName="DatabaseModel.Store.Sp_Employee_GetAll" />
+          <FunctionImportMapping FunctionImportName="Sp_Employee_GetByLastName" FunctionName="DatabaseModel.Store.Sp_Employee_GetByLastName" />
+          <FunctionImportMapping FunctionImportName="Sp_Employee_GetByPhone" FunctionName="DatabaseModel.Store.Sp_Employee_GetByPhone" />
+          <FunctionImportMapping FunctionImportName="SP_Employee_Insert" FunctionName="DatabaseModel.Store.SP_Employee_Insert" />
+          <FunctionImportMapping FunctionImportName="SP_Employee_Update" FunctionName="DatabaseModel.Store.SP_Employee_Update" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
