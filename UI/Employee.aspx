@@ -107,6 +107,7 @@
                 <div class="row">
                     <div class="col-12 text-center">
                         <telerik:RadButton ID="btn_Save" runat="server" Text="Save" OnClick="btn_Save_Click"></telerik:RadButton>
+                        <telerik:RadButton ID="btn_Cancel" runat="server" Text="Cancel" OnClick="btn_Cancel_Click" CausesValidation="false" ></telerik:RadButton>
                     </div>
                 </div>
                 <br />

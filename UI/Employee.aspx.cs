@@ -88,7 +88,9 @@ namespace UI
                 txt_lastName.Text = item["lastName"].Text;
                 txt_zip.Text = item["zip"].Text;
                 mtxt_phone.Text = (item.FindControl("EmployeePhoneLabel") as Label).Text;
-                dp_HiredDate.SelectedDate = Convert.ToDateTime(item["hiredDate"].Text);
+                dp_HiredDate.SelectedDate = DateTime.ParseExact(item["hiredDate"].Text, "MM/dd/yyyy", new CultureInfo("en-US"), DateTimeStyles.None);
+
+
             }
         }
 
@@ -141,5 +143,9 @@ namespace UI
             return builder.ToString();
         }
 
+        protected void btn_Cancel_Click(object sender, EventArgs e)
+        {
+            clearForm();
+        }
     }
 }
