@@ -1,6 +1,6 @@
 # Example code
 This is an example code using Telerik WebForms Ajax Controls version 2018.3.910 (DEV)
---Taking advantage of the Ajax Controls that provide the suit 
+--Taking advantage of the Ajax Controls that provide the suit to make the code simple
 
 ## Executing the project
 Please create a folder called 'Test' in your C Disk and paste the folder inside

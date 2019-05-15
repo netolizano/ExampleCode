@@ -87,7 +87,7 @@ namespace UI
                 txt_firstName.Text = item["firstName"].Text;
                 txt_lastName.Text = item["lastName"].Text;
                 txt_zip.Text = item["zip"].Text;
-                mtxt_phone.Text = item["phone"].Text;
+                mtxt_phone.Text = (item.FindControl("EmployeePhoneLabel") as Label).Text;
                 dp_HiredDate.SelectedDate = Convert.ToDateTime(item["hiredDate"].Text);
             }
         }
