@@ -1,50 +1,50 @@
 ﻿$(document).ready(function () {
-    /***
-     * Form validation
-     * 
-     * ***/
-    $("#form1").bootstrapValidator({
-        feedbackIcons: false,
-        excluded: "disabled",
-        fields: {
-            txtLastName: {
-                message: "invalid data",
-                validators: {
-                    notEmpty: {
-                        message: " Last Name is Required"
-                    }
-                }
-            },
-            txtFirstName: {
-                message: "Invalid data",
-                validators: {
-                    notEmpty: {
-                        message: "First Name is Required"
-                    }
-                }
-            },
-            txtZip: {
-                message: "Invalid data",
-                validators: {
-                    notEmpty: {
-                        message: "Zip is Required"
-                    }
-                }
-            },
-            dp$HiredDate$dateInput: {
-                message: "Invalid data",
-                validators: {
-                    notEmpty: {
-                        message: "Hired date is Required"
-                    }
-                }
-            }
+
+    $.validate({
+        form: '#form1',
+        rules: {
+            cmb_Option: "required",
+            txt_Option: "required"
         }
 
-    }).on("success.form.bv", function (e) {
-        e.preventDefault();
-        var $form = $(e.target);
-        alert($("#txtLastName").val());
-    
     });
+
+    // On button click
+    $("#btn_Search").click(function (e) {
+        //prevent postback
+        e.preventDefault();
+        var type = $("#cmb_Option").val();
+        var value = $("#txt_Option").val();
+
+        //URL the search on the WebAPI method
+        var urlApi = "api/Employee/searchEmployee?";
+        if (value) {
+            $.ajax({
+                type: "GET",
+                url: urlApi.concat("type=", type, "&value=", value),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    $.each(data, function (key, value) {
+                        var jsonData = JSON.stringify(value);
+                        var objData = $.parseJSON(jsonData);
+                        var id = objData.EmployeeID;
+                        var fname = objData.EmployeeFirstName;
+                        var lname = objData.EmployeeLastName;
+                        var phone = objData.EmployeePhone;
+                        var zip = objData.EmployeeZip;
+                        var hiredDate = objData.HireDate;
+                        $('<tr><td>' + id + '</td><td>' + fname + '</td><td>' + lname + '</td><td>' + phone + '</td><td>' + zip + '</td><td>' + hiredDate + '</td></tr>').appendTo('#tb_Employee');
+                    });
+                },
+                error: function (errormsg) {
+                    alert(errormsg.responseText);
+                }
+            });
+        }
+
+
+
+    });
+
 });

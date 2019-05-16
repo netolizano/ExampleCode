@@ -26,6 +26,9 @@ This project can contain DTO or POCO Classes.
 
 >UI
 This is a Web Project that contains the User Interface.
+Here you will find 2 webForms:
+1. Full ajax using Telerik WebForms Ajax Controls. 
+2. A basic search form, that call a WebAPI service using Ajax
 
 
 The mapping between "Entities Classes" and "Model Classes" are made using a tool called [AutoMaper](http://automapper.org/)
@@ -33,5 +36,8 @@ The mapping between "Entities Classes" and "Model Classes" are made using a tool
 [Download in zip](https://drive.google.com/file/d/1sWdUPc7yap_xDyz2zbWeMCPhWYrhS8SX/view?usp=sharing)
 
 [Gif Example](https://drive.google.com/file/d/16ZTG53fCyZlMo1AS_R-UGkZ5_BR_j7a5/view?usp=sharing)
+
+
+
 
 
