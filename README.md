@@ -33,9 +33,9 @@ Here you will find 2 webForms:
 
 The mapping between "Entities Classes" and "Model Classes" are made using a tool called [AutoMaper](http://automapper.org/)
 
-[Download in zip](https://drive.google.com/file/d/1sWdUPc7yap_xDyz2zbWeMCPhWYrhS8SX/view?usp=sharing)
+[Download in zip](https://drive.google.com/file/d/1uR3RcZW_AArGArsvlIZ3Ek5G0jdzN2MU/view?usp=sharing)
 
-[Gif Example](https://drive.google.com/file/d/16ZTG53fCyZlMo1AS_R-UGkZ5_BR_j7a5/view?usp=sharing)
+[Gif Example](https://drive.google.com/file/d/1oAQdslj4HJpIN11Dct1WxbWuE-mFxZ2X/view?usp=sharing)
 
 
 
